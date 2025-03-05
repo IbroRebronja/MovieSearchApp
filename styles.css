@@ -80,37 +80,26 @@ body {
     margin-top: 30px;
 }
 
-/* Adding smooth transitions to the input fields */
-.input-group {
-    position: relative;
-    margin-bottom: 20px;
-}
-
-.input-group input::placeholder {
-    color: #aaa;
-}
-
-.input-group input:focus::placeholder {
-    color: #007bff;
-}
-
-/* Adding a little animation when a suggestion is clicked */
+/* Styling for the dropdown of suggestions */
 .datalist-options {
-    display: block;
-    max-height: 200px;
-    overflow-y: auto;
-    margin-top: 8px;
+    display: none;
+    position: absolute;
+    top: 70px;
+    width: 100%;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 100;
 }
 
-.datalist-options option {
+.datalist-options div {
     padding: 10px;
     font-size: 1rem;
     cursor: pointer;
 }
 
-.datalist-options option:hover {
+.datalist-options div:hover {
     background-color: #f1f1f1;
 }
