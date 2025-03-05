@@ -1,8 +1,60 @@
 body {
     background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.card-body p {
+    font-size: 1rem;
+    color: #555;
 }
 
 .movie-card img {
+    border-radius: 8px;
+}
+
+#movieResult .card {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+#movieResult .card img {
     max-height: 400px;
     object-fit: cover;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.input-group input {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.input-group button {
+    border-radius: 8px;
+}
+
+.movie-card {
+    background-color: #f7f7f7;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#movieResult {
+    margin-top: 30px;
 }
