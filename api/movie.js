@@ -1,9 +1,11 @@
+import fetch from 'node-fetch';
+
 export default async function handler(req, res) {
     const { title, query } = req.query;
 
+    const apiKey = process.env.OMDB_API_KEY; // Ensure you have your OMDB API key stored in your environment variables
     if (title) {
-        // Handle full search query
-        const apiKey = process.env.OMDB_API_KEY;
+        // Handle full search query for movie details
         const url = `https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${apiKey}`;
 
         try {
@@ -21,7 +23,6 @@ export default async function handler(req, res) {
         }
     } else if (query) {
         // Handle search suggestions
-        const apiKey = process.env.OMDB_API_KEY;
         const url = `https://www.omdbapi.com/?s=${encodeURIComponent(query)}&apikey=${apiKey}`;
 
         try {

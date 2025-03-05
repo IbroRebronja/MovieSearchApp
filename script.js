@@ -7,28 +7,32 @@ async function showSuggestions(query) {
     }
 
     clearTimeout(timeoutId);
-    
+
     timeoutId = setTimeout(async () => {
-        const response = await fetch(`/api/movie/suggestions?query=${encodeURIComponent(query)}`);
-        const data = await response.json();
+        try {
+            const response = await fetch(`/api/movie?query=${encodeURIComponent(query)}`);
+            const data = await response.json();
 
-        const suggestionsList = document.getElementById('suggestionsList');
-        suggestionsList.innerHTML = '';
+            const suggestionsList = document.getElementById('suggestionsList');
+            suggestionsList.innerHTML = '';
 
-        if (data.Search && data.Search.length > 0) {
-            data.Search.forEach(movie => {
-                const li = document.createElement('li');
-                li.textContent = movie.Title;
-                li.onclick = () => {
-                    document.getElementById('movieSearch').value = movie.Title;
-                    searchMovie(movie.Title);
-                    document.getElementById('suggestionsList').style.display = 'none';
-                };
-                suggestionsList.appendChild(li);
-            });
-            suggestionsList.style.display = 'block';
-        } else {
-            suggestionsList.style.display = 'none';
+            if (data.Search && data.Search.length > 0) {
+                data.Search.forEach(movie => {
+                    const li = document.createElement('li');
+                    li.textContent = movie.Title;
+                    li.onclick = () => {
+                        document.getElementById('movieSearch').value = movie.Title;
+                        searchMovie(movie.Title);
+                        document.getElementById('suggestionsList').style.display = 'none';
+                    };
+                    suggestionsList.appendChild(li);
+                });
+                suggestionsList.style.display = 'block';
+            } else {
+                suggestionsList.style.display = 'none';
+            }
+        } catch (error) {
+            console.error("Error fetching suggestions:", error);
         }
     }, 300);
 }
