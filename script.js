@@ -1,3 +1,21 @@
+// Fetch and display autocomplete suggestions
+async function fetchMovieSuggestions(query) {
+    const response = await fetch(`/api/movie-suggestions?title=${encodeURIComponent(query)}`);
+    const data = await response.json();
+
+    const suggestionsList = document.getElementById("movieSuggestions");
+    suggestionsList.innerHTML = ""; // Clear previous suggestions
+
+    if (data.Response === "True" && data.Search) {
+        data.Search.forEach(movie => {
+            const option = document.createElement("option");
+            option.value = movie.Title; // Add movie title as an option
+            suggestionsList.appendChild(option);
+        });
+    }
+}
+
+// Search for movie details
 async function searchMovie() {
     const searchTerm = document.getElementById("movieSearch").value.trim();
     if (!searchTerm) {
@@ -30,3 +48,11 @@ async function searchMovie() {
         document.getElementById("movieResult").innerHTML = `<p class="text-danger">Failed to fetch movie details.</p>`;
     }
 }
+
+// Event listener to handle user input for autocomplete
+document.getElementById("movieSearch").addEventListener("input", (e) => {
+    const query = e.target.value;
+    if (query.length >= 3) { // Fetch suggestions only if user types 3 or more characters
+        fetchMovieSuggestions(query);
+    }
+});
