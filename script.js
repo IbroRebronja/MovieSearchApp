@@ -1,52 +1,12 @@
-let timeoutId;
-
-async function showSuggestions(query) {
-    if (query.length < 3) {
-        document.getElementById('suggestionsList').style.display = 'none';
-        return;
-    }
-
-    clearTimeout(timeoutId);
-
-    timeoutId = setTimeout(async () => {
-        try {
-            const response = await fetch(`/api/movie?query=${encodeURIComponent(query)}`);
-            const data = await response.json();
-
-            const suggestionsList = document.getElementById('suggestionsList');
-            suggestionsList.innerHTML = '';
-
-            if (data.Search && data.Search.length > 0) {
-                data.Search.forEach(movie => {
-                    const li = document.createElement('li');
-                    li.textContent = movie.Title;
-                    li.onclick = () => {
-                        document.getElementById('movieSearch').value = movie.Title;
-                        searchMovie(movie.Title);
-                        document.getElementById('suggestionsList').style.display = 'none';
-                    };
-                    suggestionsList.appendChild(li);
-                });
-                suggestionsList.style.display = 'block';
-            } else {
-                suggestionsList.style.display = 'none';
-            }
-        } catch (error) {
-            console.error("Error fetching suggestions:", error);
-        }
-    }, 300);
-}
-
-async function searchMovie(searchTerm = null) {
-    const searchQuery = searchTerm || document.getElementById("movieSearch").value.trim();
-    
-    if (!searchQuery) {
+async function searchMovie() {
+    const searchTerm = document.getElementById("movieSearch").value.trim();
+    if (!searchTerm) {
         alert("Please enter a movie title.");
         return;
     }
 
     try {
-        const response = await fetch(`/api/movie?title=${encodeURIComponent(searchQuery)}`);
+        const response = await fetch(`/api/movie?title=${encodeURIComponent(searchTerm)}`);
         const data = await response.json();
 
         if (data.Response === "True") {
