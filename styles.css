@@ -39,12 +39,33 @@ body {
 }
 
 .input-group input {
-    border-radius: 8px;
+    border-radius: 25px;
     border: 1px solid #ddd;
+    padding: 10px 20px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.input-group input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 .input-group button {
-    border-radius: 8px;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.input-group button:hover {
+    background-color: #0056b3;
 }
 
 .movie-card {
@@ -59,37 +80,37 @@ body {
     margin-top: 30px;
 }
 
-.movie-suggestions {
-    position: absolute;
-    width: 100%;
-    top: 100%;
-    left: 0;
+/* Adding smooth transitions to the input fields */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input::placeholder {
+    color: #aaa;
+}
+
+.input-group input:focus::placeholder {
+    color: #007bff;
+}
+
+/* Adding a little animation when a suggestion is clicked */
+.datalist-options {
+    display: block;
     max-height: 200px;
     overflow-y: auto;
+    margin-top: 8px;
     background-color: #fff;
-    border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    display: none; /* Initially hidden */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.movie-suggestions div {
+.datalist-options option {
     padding: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #ddd;
     font-size: 1rem;
+    cursor: pointer;
 }
 
-.movie-suggestions div:hover {
-    background-color: #f7f7f7;
-}
-
-.movie-suggestions div:last-child {
-    border-bottom: none;
-}
-
-.movie-suggestions div.selected {
-    background-color: #007bff;
-    color: white;
+.datalist-options option:hover {
+    background-color: #f1f1f1;
 }
