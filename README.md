@@ -12,8 +12,3 @@ A simple movie search application that allows users to search for movies and vie
 - HTML, CSS, JavaScript
 - Bootstrap 5
 - OMDB API (for movie data)
-
-## How to Use
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/MovieSearchApp.git
