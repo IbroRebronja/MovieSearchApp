@@ -6,7 +6,7 @@ A simple movie search application that allows users to search for movies and vie
 - Search movies by title
 - View movie details including genre, director, plot, and IMDb rating
 - Dynamic search suggestions with clickable options
-- Beautiful UI with Bootstrap and custom styles
+- Great UI with Bootstrap and custom styles
 
 ## Technologies Used
 - HTML, CSS, JavaScript
