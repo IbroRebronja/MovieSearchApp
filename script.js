@@ -1,35 +1,21 @@
-// Event listener for the input field
-document.getElementById("movieSearch").addEventListener("input", function() {
-    const searchTerm = document.getElementById("movieSearch").value.trim();
-    if (searchTerm.length >= 3) {
-        fetchSuggestions(searchTerm);
-    } else {
-        document.getElementById("movieSuggestions").innerHTML = ''; // Clear suggestions when the input is less than 3 characters
-    }
-});
+// Fetch and display autocomplete suggestions
+async function fetchMovieSuggestions(query) {
+    const response = await fetch(`/api/movie-suggestions?title=${encodeURIComponent(query)}`);
+    const data = await response.json();
 
-// Function to fetch movie suggestions
-async function fetchSuggestions(query) {
-    const apiKey = 'YOUR_OMDB_API_KEY'; // Replace with your OMDB API key
-    const url = `https://www.omdbapi.com/?s=${encodeURIComponent(query)}&apikey=${apiKey}`;
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
+    const suggestionsList = document.getElementById("movieSuggestions");
+    suggestionsList.innerHTML = ""; // Clear previous suggestions
 
-        if (data.Response === "True") {
-            const suggestions = data.Search;
-            let suggestionHTML = '';
-            suggestions.forEach(movie => {
-                suggestionHTML += `<option value="${movie.Title}" data-imdbid="${movie.imdbID}">`;
-            });
-            document.getElementById("movieSuggestions").innerHTML = suggestionHTML;
-        }
-    } catch (error) {
-        console.error("Error fetching movie suggestions:", error);
+    if (data.Response === "True" && data.Search) {
+        data.Search.forEach(movie => {
+            const option = document.createElement("option");
+            option.value = movie.Title; // Add movie title as an option
+            suggestionsList.appendChild(option);
+        });
     }
 }
 
-// Function to search movie by title
+// Search for movie details
 async function searchMovie() {
     const searchTerm = document.getElementById("movieSearch").value.trim();
     if (!searchTerm) {
@@ -62,3 +48,11 @@ async function searchMovie() {
         document.getElementById("movieResult").innerHTML = `<p class="text-danger">Failed to fetch movie details.</p>`;
     }
 }
+
+// Event listener to handle user input for autocomplete
+document.getElementById("movieSearch").addEventListener("input", (e) => {
+    const query = e.target.value;
+    if (query.length >= 3) { // Fetch suggestions only if user types 3 or more characters
+        fetchMovieSuggestions(query);
+    }
+});

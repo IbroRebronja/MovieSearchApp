@@ -13,11 +13,11 @@
             <div class="col-md-8 col-lg-6">
                 <div class="card shadow-lg p-4">
                     <h2 class="text-center mb-4">Movie Search</h2>
-                    <div class="input-group mb-4 position-relative">
+                    <div class="input-group mb-4">
                         <input type="text" class="form-control" id="movieSearch" placeholder="Search for a movie..." aria-label="Search for a movie" list="movieSuggestions">
                         <button class="btn btn-primary" onclick="searchMovie()">Search</button>
-                        <datalist id="movieSuggestions" class="datalist-options"></datalist>
                     </div>
+                    <datalist id="movieSuggestions"></datalist>
                     <div id="movieResult"></div>
                 </div>
             </div>

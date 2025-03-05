@@ -45,7 +45,6 @@ body {
     font-size: 1rem;
     transition: all 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
 }
 
 .input-group input:focus {
@@ -81,7 +80,21 @@ body {
     margin-top: 30px;
 }
 
-/* Style for the datalist dropdown */
+/* Adding smooth transitions to the input fields */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input::placeholder {
+    color: #aaa;
+}
+
+.input-group input:focus::placeholder {
+    color: #007bff;
+}
+
+/* Adding a little animation when a suggestion is clicked */
 .datalist-options {
     display: block;
     max-height: 200px;
@@ -90,9 +103,6 @@ body {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    width: 100%;
-    z-index: 10;
 }
 
 .datalist-options option {

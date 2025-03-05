@@ -5,7 +5,7 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: "Movie title is required" });
     }
 
-    const apiKey = process.env.OMDB_API_KEY;
+    const apiKey = process.env.OMDB_API_KEY; // The environment variable from Vercel
     const url = `https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${apiKey}`;
 
     try {
