@@ -1,32 +1,46 @@
+/* General Body and Container Styles */
 body {
-    background-color: #f8f9fa;
+    background-color: #f4f6f9;
     font-family: 'Arial', sans-serif;
     color: #333;
+    margin: 0;
+    padding: 0;
 }
 
+.container {
+    max-width: 800px;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+/* Card Styles */
 .card {
     background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 25px;
 }
 
 .card-title {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     color: #333;
-    font-weight: bold;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 .card-body p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #555;
+    line-height: 1.6;
 }
 
 .movie-card img {
-    border-radius: 8px;
+    border-radius: 12px;
 }
 
 #movieResult .card {
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
     margin-top: 20px;
 }
@@ -35,26 +49,76 @@ body {
     max-height: 400px;
     object-fit: cover;
     width: 100%;
-    border-radius: 8px;
+    border-radius: 12px;
 }
 
+/* Input Styles */
 .input-group input {
-    border-radius: 8px;
-    border: 1px solid #ddd;
+    border-radius: 12px;
+    border: 2px solid #ddd;
+    padding: 15px;
+    font-size: 1.1rem;
 }
 
 .input-group button {
-    border-radius: 8px;
+    border-radius: 12px;
+    background-color: #007bff;
+    border: none;
+    padding: 12px 20px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
+.input-group button:hover {
+    background-color: #0056b3;
+}
+
+/* Datalist Styling */
+datalist {
+    border-radius: 12px;
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+
+.datalist-option {
+    padding: 8px 10px;
+}
+
+/* Movie Card Styles */
 .movie-card {
-    background-color: #f7f7f7;
+    background-color: #f9f9f9;
     margin-top: 20px;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-#movieResult {
-    margin-top: 30px;
+.movie-card h4 {
+    font-size: 1.4rem;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.movie-card p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.movie-card img {
+    border-radius: 12px;
+    width: 100%;
+    height: auto;
+}
+
+/* Utility Styles */
+.text-danger {
+    color: #e74c3c;
+    font-size: 1.2rem;
+}
+
+.text-center {
+    text-align: center;
 }
