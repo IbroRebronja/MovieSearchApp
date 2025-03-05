@@ -3,17 +3,45 @@ async function fetchMovieSuggestions(query) {
     const response = await fetch(`/api/movie-suggestions?title=${encodeURIComponent(query)}`);
     const data = await response.json();
 
-    const suggestionsList = document.getElementById("movieSuggestions");
-    suggestionsList.innerHTML = ""; // Clear previous suggestions
+    const suggestionsContainer = document.getElementById("movieSuggestions");
+    suggestionsContainer.innerHTML = ""; // Clear previous suggestions
 
     if (data.Response === "True" && data.Search) {
+        suggestionsContainer.style.display = 'block'; // Show the suggestions
+
         data.Search.forEach(movie => {
-            const option = document.createElement("option");
-            option.value = movie.Title; // Add movie title as an option
-            suggestionsList.appendChild(option);
+            const suggestionItem = document.createElement("div");
+            suggestionItem.classList.add("suggestion-item");
+            suggestionItem.textContent = movie.Title;
+            suggestionItem.onclick = () => {
+                document.getElementById("movieSearch").value = movie.Title; // Set input value to selected movie
+                suggestionsContainer.style.display = 'none'; // Hide suggestions
+                searchMovie(); // Trigger movie search
+            };
+            suggestionsContainer.appendChild(suggestionItem);
         });
+    } else {
+        suggestionsContainer.style.display = 'none'; // Hide suggestions if no results
     }
 }
+
+// Event listener to handle user input for autocomplete
+document.getElementById("movieSearch").addEventListener("input", (e) => {
+    const query = e.target.value;
+    if (query.length >= 3) { // Fetch suggestions only if user types 3 or more characters
+        fetchMovieSuggestions(query);
+    } else {
+        document.getElementById("movieSuggestions").style.display = 'none'; // Hide suggestions if input is less than 3 characters
+    }
+});
+
+// Close suggestions when clicking outside
+document.addEventListener("click", (e) => {
+    const suggestionsContainer = document.getElementById("movieSuggestions");
+    if (!suggestionsContainer.contains(e.target) && e.target !== document.getElementById("movieSearch")) {
+        suggestionsContainer.style.display = 'none'; // Hide suggestions if clicked outside
+    }
+});
 
 // Search for movie details
 async function searchMovie() {
@@ -48,11 +76,3 @@ async function searchMovie() {
         document.getElementById("movieResult").innerHTML = `<p class="text-danger">Failed to fetch movie details.</p>`;
     }
 }
-
-// Event listener to handle user input for autocomplete
-document.getElementById("movieSearch").addEventListener("input", (e) => {
-    const query = e.target.value;
-    if (query.length >= 3) { // Fetch suggestions only if user types 3 or more characters
-        fetchMovieSuggestions(query);
-    }
-});

@@ -9,15 +9,15 @@
 </head>
 <body>
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-5">
             <div class="col-md-8 col-lg-6">
                 <div class="card shadow-lg p-4">
-                    <h2 class="card-title">Movie Search</h2>
-                    <div class="input-group mb-4">
-                        <input type="text" class="form-control" id="movieSearch" placeholder="Search for a movie..." aria-label="Search for a movie" list="movieSuggestions">
+                    <h2 class="text-center mb-4">Movie Search</h2>
+                    <div class="input-group mb-4 position-relative">
+                        <input type="text" class="form-control" id="movieSearch" placeholder="Search for a movie..." aria-label="Search for a movie">
                         <button class="btn btn-primary" onclick="searchMovie()">Search</button>
                     </div>
-                    <datalist id="movieSuggestions"></datalist>
+                    <div id="movieSuggestions" class="movie-suggestions"></div> <!-- Custom suggestions container -->
                     <div id="movieResult"></div>
                 </div>
             </div>

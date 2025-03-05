@@ -1,46 +1,32 @@
-/* General Body and Container Styles */
 body {
-    background-color: #f4f6f9;
+    background-color: #f8f9fa;
     font-family: 'Arial', sans-serif;
     color: #333;
-    margin: 0;
-    padding: 0;
 }
 
-.container {
-    max-width: 800px;
-    padding: 20px;
-    margin-top: 50px;
-}
-
-/* Card Styles */
 .card {
     background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .card-title {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     color: #333;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 15px;
+    font-weight: bold;
 }
 
 .card-body p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #555;
-    line-height: 1.6;
 }
 
 .movie-card img {
-    border-radius: 12px;
+    border-radius: 8px;
 }
 
 #movieResult .card {
-    border-radius: 12px;
+    border-radius: 8px;
     overflow: hidden;
     margin-top: 20px;
 }
@@ -49,76 +35,61 @@ body {
     max-height: 400px;
     object-fit: cover;
     width: 100%;
-    border-radius: 12px;
+    border-radius: 8px;
 }
 
-/* Input Styles */
 .input-group input {
-    border-radius: 12px;
-    border: 2px solid #ddd;
-    padding: 15px;
-    font-size: 1.1rem;
-}
-
-.input-group button {
-    border-radius: 12px;
-    background-color: #007bff;
-    border: none;
-    padding: 12px 20px;
-    color: white;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.input-group button:hover {
-    background-color: #0056b3;
-}
-
-/* Datalist Styling */
-datalist {
-    border-radius: 12px;
-    padding: 5px;
+    border-radius: 8px;
     border: 1px solid #ddd;
 }
 
-.datalist-option {
-    padding: 8px 10px;
+.input-group button {
+    border-radius: 8px;
 }
 
-/* Movie Card Styles */
 .movie-card {
-    background-color: #f9f9f9;
+    background-color: #f7f7f7;
     margin-top: 20px;
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.movie-card h4 {
-    font-size: 1.4rem;
-    color: #333;
-    font-weight: 600;
-    margin-bottom: 10px;
+#movieResult {
+    margin-top: 30px;
 }
 
-.movie-card p {
-    font-size: 1.1rem;
-    color: #666;
-}
-
-.movie-card img {
-    border-radius: 12px;
+.movie-suggestions {
+    position: absolute;
     width: 100%;
-    height: auto;
+    top: 100%;
+    left: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none; /* Initially hidden */
 }
 
-/* Utility Styles */
-.text-danger {
-    color: #e74c3c;
-    font-size: 1.2rem;
+.movie-suggestions div {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
 }
 
-.text-center {
-    text-align: center;
+.movie-suggestions div:hover {
+    background-color: #f7f7f7;
+}
+
+.movie-suggestions div:last-child {
+    border-bottom: none;
+}
+
+.movie-suggestions div.selected {
+    background-color: #007bff;
+    color: white;
 }
