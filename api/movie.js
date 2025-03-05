@@ -1,4 +1,3 @@
-// movie.js in the 'api' folder
 export default async function handler(req, res) {
     const { title } = req.query;
 
@@ -7,7 +6,7 @@ export default async function handler(req, res) {
     }
 
     const apiKey = process.env.OMDB_API_KEY;
-    const url = `https://www.omdbapi.com/?s=${encodeURIComponent(title)}&apikey=${apiKey}`;
+    const url = `https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${apiKey}`;
 
     try {
         const response = await fetch(url);
@@ -16,7 +15,7 @@ export default async function handler(req, res) {
         if (data.Response === "True") {
             res.status(200).json(data);
         } else {
-            res.status(404).json({ error: "No movies found" });
+            res.status(404).json({ error: "Movie not found" });
         }
     } catch (error) {
         console.error("Error fetching movie data:", error);
