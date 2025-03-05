@@ -45,6 +45,7 @@ body {
     font-size: 1rem;
     transition: all 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 .input-group input:focus {
@@ -80,26 +81,26 @@ body {
     margin-top: 30px;
 }
 
-/* Styling for the dropdown of suggestions */
+/* Style for the datalist dropdown */
 .datalist-options {
-    display: none;
-    position: absolute;
-    top: 70px;
-    width: 100%;
+    display: block;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 8px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-height: 200px;
-    overflow-y: auto;
-    z-index: 100;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
 }
 
-.datalist-options div {
+.datalist-options option {
     padding: 10px;
     font-size: 1rem;
     cursor: pointer;
 }
 
-.datalist-options div:hover {
+.datalist-options option:hover {
     background-color: #f1f1f1;
 }
